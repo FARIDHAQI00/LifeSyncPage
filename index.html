@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="id" class="no-js">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LifeSync — Jadwal, presensi, dan fokus kuliah dalam satu aplikasi</title>
+  <meta name="description" content="LifeSync adalah aplikasi produktivitas offline-first untuk mahasiswa: scan KRS, pantau presensi 75%, kelola tugas, dan timer fokus 20-20-20. Gratis, tanpa iklan." />
+  <meta name="theme-color" content="#f7f7f3" />
+  <meta name="color-scheme" content="light" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="LifeSync — Semua jadwalmu, satu kantong" />
+  <meta property="og:description" content="Scan KRS, pantau presensi 75%, kelola tugas, dan fokus dengan timer 20-20-20. Offline-first, tanpa iklan." />
+  <meta property="og:image" content="assets/app-icon.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="assets/app-icon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="assets/app-icon.png" />
+
+  <link rel="preload" href="assets/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/phosphor.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Flip the no-js marker before first paint so reveal animations never flash. -->
+  <script>document.documentElement.classList.replace("no-js", "js");</script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "LifeSync",
+    "applicationCategory": "ProductivityApplication",
+    "operatingSystem": "Android",
+    "inLanguage": "id",
+    "description": "Aplikasi produktivitas offline-first untuk mahasiswa: jadwal kuliah, presensi, tugas, catatan, AI Scan KRS, dan timer fokus 20-20-20.",
+    "offers": [
+      { "@type": "Offer", "name": "Free", "price": "0", "priceCurrency": "IDR" },
+      { "@type": "Offer", "name": "Pro Bulanan", "price": "14999", "priceCurrency": "IDR" },
+      { "@type": "Offer", "name": "Pro Semester", "price": "54999", "priceCurrency": "IDR" }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Lewati ke konten</a>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ───────────────────────────── Topbar ───────────────────────────── -->
+  <header class="topbar" id="header">
+    <div class="wrap topbar__inner">
+      <a class="brand" href="#top" aria-label="LifeSync — beranda">
+        <img class="brand__mark" src="assets/app-icon.png" alt="" width="30" height="30" />
+        <span>Life<span class="brand__accent">Sync</span></span>
+      </a>
+
+      <nav class="navlinks" aria-label="Navigasi utama">
+        <a class="navlink" href="#fitur">Fitur</a>
+        <a class="navlink" href="#kehadiran">Kehadiran</a>
+        <a class="navlink" href="#fokus">Fokus</a>
+        <a class="navlink" href="#harga">Harga</a>
+        <a class="navlink" href="#faq">FAQ</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a class="btn btn--ghost btn--sm" href="#kontak">Kontak</a>
+        <a class="btn btn--lime btn--sm" data-link="apk" href="#unduh">
+          <i class="ph-download-simple" aria-hidden="true"></i>Unduh APK
+        </a>
+      </div>
+
+      <button class="nav-burger" id="navToggle" aria-expanded="false" aria-controls="navMobile" aria-label="Buka menu">
+        <i class="ph-list-dashes" aria-hidden="true"></i>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-nav" id="navMobile">
+    <a href="#fitur">Fitur</a>
+    <a href="#kehadiran">Kehadiran</a>
+    <a href="#fokus">Fokus</a>
+    <a href="#harga">Harga</a>
+    <a href="#faq">FAQ</a>
+    <a href="#kontak">Kontak</a>
+    <a class="btn btn--lime btn--block" data-link="apk" href="#unduh">
+      <i class="ph-download-simple" aria-hidden="true"></i>Unduh APK
+    </a>
+  </div>
+
+  <main id="main">
+    <!-- ─────────────────────────── Hero ─────────────────────────── -->
+    <section class="hero" id="top">
+      <div class="hero__wash" aria-hidden="true"></div>
+
+      <div class="wrap hero__inner">
+        <span class="badge-pill reveal"><span class="badge-pill__dot" aria-hidden="true"></span>
+          <b>Gratis selamanya</b> untuk kebutuhan dasar · Android
+        </span>
+        <h1 class="h1 reveal" style="margin-top:22px">Atur kuliah tanpa internet, dari mana saja.</h1>
+        <p class="lead hero__lead reveal">
+          LifeSync membantu kamu menata jadwal, menjaga presensi di batas 75%, menuntaskan tugas,
+          dan fokus belajar dengan istirahat mata 20-20-20 — semuanya jalan offline.
+        </p>
+        <div class="hero__actions reveal">
+          <a class="btn btn--lime" data-link="apk" href="#unduh">
+            <i class="ph-download-simple" aria-hidden="true"></i>Unduh APK
+          </a>
+          <a class="btn btn--ghost" href="#fitur">Lihat fitur</a>
+        </div>
+        <p class="hero__note reveal">Tanpa iklan · Tanpa langganan wajib · Data tersimpan di perangkatmu</p>
+      </div>
+
+      <div class="wrap hero__stage" aria-hidden="true">
+        <div class="hero__trio">
+        <span class="stage-chip stage-chip--a">
+          <i class="ph-bell-ringing"></i>
+          <span>Alarm kelas<small>10 menit sebelum mulai</small></span>
+        </span>
+        <span class="stage-chip stage-chip--b">
+          <i class="ph-sun-horizon"></i>
+          <span>Istirahat mata<small>20 detik, otomatis</small></span>
+        </span>
+
+        <!-- left: AI Scan -->
+        <div class="phone phone--left">
+          <div class="phone__screen">
+            <div class="statusbar"><span>09:41</span>
+              <span class="statusbar__icons"><i class="ph-cell-signal-full"></i><i class="ph-wifi-high"></i><i class="ph-battery-full"></i></span>
+            </div>
+            <div class="app">
+              <div class="app__label"><em>AI Scan</em><span>Memindai…</span></div>
+              <div class="scan-doc">
+                <span class="scan-frame"></span>
+                <span class="scan-beam" data-scan-beam></span>
+                <div class="scan-doc__head">KARTU RENCANA STUDI · SEMESTER 5</div>
+                <div class="scan-doc__line w85"></div>
+                <div class="scan-doc__line w70"></div>
+                <div class="scan-doc__line w85"></div>
+                <div class="scan-doc__line w55"></div>
+              </div>
+              <div class="app__label"><em>Hasil ekstraksi</em><span>4 item</span></div>
+              <div class="chips">
+                <span class="chip"><i class="ph-check"></i>Algoritma · 3 SKS</span>
+                <span class="chip"><i class="ph-check"></i>Basis Data · 3 SKS</span>
+                <span class="chip chip--muted"><i class="ph-map-pin"></i>GD-301</span>
+              </div>
+            </div>
+            <div class="tabbar">
+              <i class="ph-house"></i><i class="ph-calendar-dots"></i>
+              <span class="scan-fab"><i class="ph-scan"></i></span>
+              <i class="ph-list-checks"></i><i class="ph-user"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- main: dashboard -->
+        <div class="phone phone--main">
+          <div class="phone__screen">
+            <div class="statusbar"><span>08:12</span>
+              <span class="statusbar__icons"><i class="ph-cell-signal-full"></i><i class="ph-wifi-high"></i><i class="ph-battery-full"></i></span>
+            </div>
+            <div class="app">
+              <div class="app__top">
+                <div class="app__avatar">F</div>
+                <div class="app__hello"><span>Selamat pagi</span><strong>Hari ini, Senin</strong></div>
+                <span class="tag-pro">PRO</span>
+              </div>
+              <div class="card-lite sla">
+                <div class="sla__ring">
+                  <svg viewBox="0 0 62 62" width="62" height="62">
+                    <circle class="track" cx="31" cy="31" r="26"></circle>
+                    <circle class="value" data-sla-ring cx="31" cy="31" r="26"></circle>
+                  </svg>
+                  <b>75%</b>
+                </div>
+                <div class="sla__meta">
+                  <strong>Kehadiran aman</strong>
+                  <span>12 hadir · 2 izin · 0 alpa</span>
+                  <span class="sla__pill"><i class="ph-seal-check"></i>Sisa 3 alpa</span>
+                </div>
+              </div>
+              <div class="app__label"><em>Hari ini</em><span>3 kelas</span></div>
+              <div class="class-row">
+                <span class="class-row__bar"></span>
+                <div class="class-row__main"><strong>Algoritma &amp; Pemrograman</strong><span>08:00 – 10:00 · GD-301</span></div>
+                <span class="class-row__sks">3 SKS</span>
+              </div>
+              <div class="class-row">
+                <span class="class-row__bar"></span>
+                <div class="class-row__main"><strong>Basis Data</strong><span>10:15 – 12:00 · Lab-2</span></div>
+                <span class="class-row__sks">3 SKS</span>
+              </div>
+            </div>
+            <div class="tabbar">
+              <i class="ph-house is-active"></i><i class="ph-calendar-dots"></i>
+              <span class="scan-fab"><i class="ph-scan"></i></span>
+              <i class="ph-list-checks"></i><i class="ph-user"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- right: timer -->
+        <div class="phone phone--right">
+          <div class="phone__screen">
+            <div class="statusbar"><span>20:00</span>
+              <span class="statusbar__icons"><i class="ph-cell-signal-full"></i><i class="ph-wifi-slash"></i><i class="ph-battery-full"></i></span>
+            </div>
+            <div class="app">
+              <div class="app__label"><em>Timer fokus</em><span>20-20-20</span></div>
+              <div class="dial">
+                <svg viewBox="0 0 168 168" width="158" height="158">
+                  <circle class="track" cx="84" cy="84" r="70"></circle>
+                  <circle class="value" data-dial-ring cx="84" cy="84" r="70"></circle>
+                </svg>
+                <div class="dial__inner"><b>12:40</b><span>Fokus</span></div>
+              </div>
+              <div class="chips" style="justify-content:center">
+                <span class="chip chip--purple"><i class="ph-eye"></i>Jeda 20 detik</span>
+              </div>
+            </div>
+            <div class="tabbar">
+              <i class="ph-house"></i><i class="ph-calendar-dots"></i>
+              <span class="scan-fab"><i class="ph-scan"></i></span>
+              <i class="ph-list-checks"></i><i class="ph-user"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────── Features ─────────────────────────── -->
+    <section class="section" id="fitur">
+      <div class="wrap">
+        <div class="head-center">
+          <h2 class="h2 reveal">Semua yang kamu butuh. Tanpa yang tidak.</h2>
+          <p class="lead reveal">
+            Manajemen semester yang dirancang sederhana: satu aplikasi, alur yang jelas,
+            dan tidak ada fitur yang cuma jadi hiasan.
+          </p>
+        </div>
+
+        <div class="bento" style="margin-top:44px">
+          <article class="fcard reveal">
+            <span class="fcard__icon"><i class="ph-scan" aria-hidden="true"></i></span>
+            <h3>AI Smart Scan</h3>
+            <p>Foto KRS atau tangkapan layar jadwal, lalu isi otomatis mata kuliah, ruang, dosen, dan SKS. Kamu cukup memeriksa sebelum menyimpan.</p>
+            <a class="link-arrow" href="#kehadiran">Pelajari<i class="ph-arrow-right" aria-hidden="true"></i></a>
+          </article>
+
+          <article class="fcard fcard--showcase reveal">
+            <span class="fcard__icon"><i class="ph-timer" aria-hidden="true"></i></span>
+            <h3>Timer fokus 20-20-20</h3>
+            <p>Belajar 20 menit, istirahatkan mata 20 detik. Tetap berjalan walau layar mati atau aplikasi ditutup.</p>
+            <div class="phone">
+              <div class="phone__screen">
+                <div class="statusbar"><span>20:00</span>
+                  <span class="statusbar__icons"><i class="ph-wifi-slash"></i><i class="ph-battery-full"></i></span>
+                </div>
+                <div class="app">
+                  <div class="app__label"><em>Timer fokus</em><span>20-20-20</span></div>
+                  <div class="dial">
+                    <svg viewBox="0 0 168 168" width="158" height="158">
+                      <circle class="track" cx="84" cy="84" r="70"></circle>
+                      <circle class="value" data-dial-ring cx="84" cy="84" r="70"></circle>
+                    </svg>
+                    <div class="dial__inner"><b>07:20</b><span>Fokus</span></div>
+                  </div>
+                  <div class="chips" style="justify-content:center">
+                    <span class="chip"><i class="ph-clock"></i>Fokus 20 mnt</span>
+                    <span class="chip chip--purple"><i class="ph-eye"></i>Jeda 20 dtk</span>
+                  </div>
+                </div>
+                <div class="tabbar">
+                  <i class="ph-house is-active"></i><i class="ph-calendar-dots"></i>
+                  <span class="scan-fab"><i class="ph-scan"></i></span>
+                  <i class="ph-list-checks"></i><i class="ph-user"></i>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="fcard reveal">
+            <span class="fcard__icon"><i class="ph-chart-line-up" aria-hidden="true"></i></span>
+            <h3>Presensi &amp; SLA 75%</h3>
+            <p>Catat kehadiran sekali ketuk, lihat persentase per mata kuliah, sisa jatah alpa, dan peringatan sebelum menyentuh batas.</p>
+            <a class="link-arrow" href="#kehadiran">Pelajari<i class="ph-arrow-right" aria-hidden="true"></i></a>
+          </article>
+
+          <article class="fcard reveal">
+            <span class="fcard__icon"><i class="ph-list-checks" aria-hidden="true"></i></span>
+            <h3>Tugas &amp; deadline</h3>
+            <p>Prioritas, tenggat, dan pengingat. Yang mendesak naik ke atas; yang selesai langsung keluar dari daftar aktif.</p>
+            <a class="link-arrow" href="#cara">Pelajari<i class="ph-arrow-right" aria-hidden="true"></i></a>
+          </article>
+
+          <article class="fcard reveal">
+            <span class="fcard__icon"><i class="ph-cloud-check" aria-hidden="true"></i></span>
+            <h3>Catatan &amp; backup cloud</h3>
+            <p>Tulis catatan materi per mata kuliah, simpan hasil AI Scan, dan aktifkan Pro untuk backup serta sinkron antar HP.</p>
+            <a class="link-arrow" href="#harga">Pelajari<i class="ph-arrow-right" aria-hidden="true"></i></a>
+          </article>
+        </div>
+
+        <div class="bento__foot">
+          <a class="btn btn--ghost" href="#cara">Lihat cara pakainya<i class="ph-arrow-down" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────── Trust band (carousel) ─────────────────────────── -->
+    <section class="section section--dark" id="cara">
+      <div class="wrap">
+        <div class="head-center">
+          <h2 class="h2 reveal">Dibuat untuk hari-hari kuliah yang nyata.</h2>
+          <p class="lead reveal">Tiga hal yang paling sering menyelamatkan semester: presensi yang aman, fokus yang sehat, dan tugas yang tidak terlewat.</p>
+        </div>
+
+        <div class="carousel reveal" data-carousel style="margin-top:44px">
+          <div class="carousel__track" data-carousel-track>
+            <article class="trust-card">
+              <span class="trust-card__kicker">Kehadiran</span>
+              <h3>Aman di batas 75%</h3>
+              <p>LifeSync menghitung persentase kehadiranmu per mata kuliah dan menunjukkan sisa jatah alpa sebelum kamu kritis.</p>
+              <div class="phone">
+                <div class="phone__screen">
+                  <div class="statusbar"><span>08:12</span>
+                    <span class="statusbar__icons"><i class="ph-wifi-high"></i><i class="ph-battery-full"></i></span>
+                  </div>
+                  <div class="app">
+                    <div class="card-lite sla">
+                      <div class="sla__ring">
+                        <svg viewBox="0 0 62 62" width="62" height="62">
+                          <circle class="track" cx="31" cy="31" r="26"></circle>
+                          <circle class="value" data-sla-ring cx="31" cy="31" r="26"></circle>
+                        </svg>
+                        <b>75%</b>
+                      </div>
+                      <div class="sla__meta">
+                        <strong>Kehadiran aman</strong>
+                        <span>12 hadir · 2 izin · 0 alpa</span>
+                        <span class="sla__pill"><i class="ph-seal-check"></i>Sisa 3 alpa</span>
+                      </div>
+                    </div>
+                    <div class="app__label"><em>Hadir</em><span>14 pertemuan</span></div>
+                    <div class="class-row">
+                      <span class="class-row__bar"></span>
+                      <div class="class-row__main"><strong>Basis Data</strong><span>Hadir · 10:15</span></div>
+                      <span class="class-row__sks">3 SKS</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="trust-card trust-card--purple">
+              <span class="trust-card__kicker">Fokus</span>
+              <h3>Fokus tanpa merusak mata</h3>
+              <p>Siklus 20-20-20 dengan notifikasi persisten berisi tombol Jeda, Lanjut, dan Hentikan. Tidak perlu buka aplikasi.</p>
+              <div class="phone">
+                <div class="phone__screen">
+                  <div class="statusbar"><span>20:00</span>
+                    <span class="statusbar__icons"><i class="ph-wifi-slash"></i><i class="ph-battery-full"></i></span>
+                  </div>
+                  <div class="app">
+                    <div class="app__label"><em>Timer fokus</em><span>20-20-20</span></div>
+                    <div class="dial">
+                      <svg viewBox="0 0 168 168" width="158" height="158">
+                        <circle class="track" cx="84" cy="84" r="70"></circle>
+                        <circle class="value" data-dial-ring cx="84" cy="84" r="70"></circle>
+                      </svg>
+                      <div class="dial__inner"><b>12:40</b><span>Fokus</span></div>
+                    </div>
+                    <div class="card-lite">
+                      <div class="app__label" style="margin-bottom:8px"><em>Istirahat berikutnya</em><span>07:20</span></div>
+                      <div class="scan-doc__line w85"></div>
+                      <div class="scan-doc__line w55" style="margin-bottom:0;background:rgba(168,201,21,.9)"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="trust-card">
+              <span class="trust-card__kicker">Tugas</span>
+              <h3>Tidak ada yang terlewat</h3>
+              <p>Setiap tugas punya prioritas dan tenggat. Pengingatnya jalan sendiri, bahkan saat kamu sedang offline.</p>
+              <div class="phone">
+                <div class="phone__screen">
+                  <div class="statusbar"><span>19:24</span>
+                    <span class="statusbar__icons"><i class="ph-wifi-high"></i><i class="ph-battery-full"></i></span>
+                  </div>
+                  <div class="app">
+                    <div class="app__label"><em>Tugas aktif</em><span>3 item</span></div>
+                    <div class="task-row"><span class="task-row__box"></span>Laporan Basis Data<span class="task-row__due task-row__due--warn">Hari ini</span></div>
+                    <div class="task-row"><span class="task-row__box"></span>Latihan Jaringan<span class="task-row__due">2 hari</span></div>
+                    <div class="task-row"><span class="task-row__box is-done"></span>Review Statistika<span class="task-row__due">Selesai</span></div>
+                  </div>
+                  <div class="tabbar">
+                    <i class="ph-house"></i><i class="ph-calendar-dots"></i>
+                    <span class="scan-fab"><i class="ph-scan"></i></span>
+                    <i class="ph-list-checks is-active"></i><i class="ph-user"></i>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="trust-card">
+              <span class="trust-card__kicker">Privasi</span>
+              <h3>Data tetap milikmu</h3>
+              <p>Data utama hidup di perangkat. Sinkron cloud hanya aktif kalau kamu menyalakannya, dan tanpa SDK iklan atau pelacak.</p>
+              <div class="phone">
+                <div class="phone__screen">
+                  <div class="statusbar"><span>08:12</span>
+                    <span class="statusbar__icons"><i class="ph-wifi-slash"></i><i class="ph-battery-full"></i></span>
+                  </div>
+                  <div class="app">
+                    <div class="app__top">
+                      <div class="app__avatar"><i class="ph-lock-simple" style="font-size:14px"></i></div>
+                      <div class="app__hello"><span>Mode</span><strong>Tamu (offline)</strong></div>
+                    </div>
+                    <div class="card-lite">
+                      <div class="app__label" style="margin-bottom:8px"><em>Penyimpanan</em><span>Lokal</span></div>
+                      <p class="small" style="color:#7c8595;font-size:10px">Tidak ada data yang dikirim ke cloud selama kamu memakai mode tamu.</p>
+                    </div>
+                    <div class="chips">
+                      <span class="chip"><i class="ph-check"></i>Tanpa iklan</span>
+                      <span class="chip"><i class="ph-check"></i>Tanpa pelacak</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="carousel__nav">
+            <button class="carousel__btn" data-carousel-prev aria-label="Sebelumnya"><i class="ph-arrow-left" aria-hidden="true"></i></button>
+            <div class="carousel__dots" data-carousel-dots aria-hidden="true"></div>
+            <button class="carousel__btn" data-carousel-next aria-label="Selanjutnya"><i class="ph-arrow-right" aria-hidden="true"></i></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────── Kehadiran deep dive ─────────────────────────── -->
+    <section class="section" id="kehadiran">
+      <div class="wrap">
+        <div class="head-center">
+          <h2 class="h2 reveal">Batas kehadiran kampus, dijaga otomatis.</h2>
+          <p class="lead reveal">
+            Catat presensi sekali ketuk setiap selesai kelas. LifeSync menghitung persentase
+            kehadiranmu, menunjukkan sisa jatah alpa, dan memperingatkan sebelum kamu kritis.
+          </p>
+        </div>
+
+        <div class="trio">
+          <div class="fcard reveal">
+            <span class="fcard__icon"><i class="ph-calendar-check" aria-hidden="true"></i></span>
+            <h3>Catat sekali ketuk</h3>
+            <p>Tandai hadir, izin, sakit, atau alpa dari kartu jadwal yang sedang berjalan. Selesai dalam satu ketukan.</p>
+          </div>
+          <div class="fcard reveal">
+            <span class="fcard__icon"><i class="ph-target" aria-hidden="true"></i></span>
+            <h3>Ambang 75%</h3>
+            <p>Persentase per mata kuliah, sisa toleransi alpa, dan peringatan dini sebelum kamu melewati batas aman.</p>
+          </div>
+          <div class="fcard reveal">
+            <span class="fcard__icon"><i class="ph-trend-up" aria-hidden="true"></i></span>
+            <h3>Analitik prediktif</h3>
+            <p>Di paket Pro: proyeksi kehadiran berturut-turut agar tetap aman, dan simulasi "kalau alpa 2 kali lagi".</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────── Fokus ─────────────────────────── -->
+    <section class="section" id="fokus">
+      <div class="wrap">
+        <div class="head-center">
+          <h2 class="h2 reveal">Fokus 20 menit. Istirahat mata 20 detik.</h2>
+          <p class="lead reveal">
+            Aturan 20-20-20 dijalankan otomatis. Hitungannya tetap berjalan walau layar mati
+            atau aplikasi kamu tutup, lengkap dengan notifikasi Jeda/Lanjut/Hentikan.
+          </p>
+        </div>
+
+        <div class="bento bento--two" style="margin-top:44px">
+          <article class="fcard reveal">
+            <span class="fcard__icon"><i class="ph-eye" aria-hidden="true"></i></span>
+            <h3>Jeda mata otomatis</h3>
+            <p>Setiap 20 menit fokus, LifeSync mengingatkanmu melihat objek jauh selama 20 detik. Ada bunyi pengingat dan hitungan jeda.</p>
+            <ul class="checklist" style="margin-top:16px">
+              <li><i class="ph-check-circle"></i><span>Hitungan tetap benar saat layar terkunci</span></li>
+              <li><i class="ph-check-circle"></i><span>Notifikasi persisten dengan tombol kontrol</span></li>
+            </ul>
+          </article>
+          <article class="fcard reveal">
+            <span class="fcard__icon"><i class="ph-device-mobile" aria-hidden="true"></i></span>
+            <h3>Andal di Android</h3>
+            <p>Timer berjalan di latar belakang, termasuk saat aplikasi di-swipe keluar. Kami juga jujur soal batasannya di iOS.</p>
+            <ul class="checklist" style="margin-top:16px">
+              <li><i class="ph-check-circle"></i><span>Android: timer latar belakang penuh</span></li>
+              <li><i class="ph-check-circle"></i><span>iOS: jeda mata jalan saat aplikasi terbuka</span></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────── Pricing ─────────────────────────── -->
+    <section class="section section--band" id="harga">
+      <div class="wrap">
+        <div class="head-center">
+          <h2 class="h2 reveal">Paket yang fleksibel untuk setiap semester.</h2>
+          <p class="lead reveal">Mulai gratis, upgrade kalau butuh. Tanpa iklan di kedua paket, dan fitur Pro diverifikasi di server.</p>
+        </div>
+
+        <div class="plans" style="margin-top:44px">
+          <article class="plan reveal">
+            <div class="plan__head"><h3>Free</h3></div>
+            <div class="plan__price"><b>Rp 0</b><span>selamanya</span></div>
+            <p class="plan__tagline">Cukup untuk menjalani semester dengan rapi.</p>
+            <ul class="plan__list">
+              <li><i class="ph-check"></i><span>10 mata kuliah &amp; 5 tugas aktif</span></li>
+              <li><i class="ph-check"></i><span>Timer fokus 20-20-20 &amp; alarm kelas</span></li>
+              <li><i class="ph-check"></i><span>Catatan materi &amp; presensi dasar</span></li>
+              <li><i class="ph-check"></i><span>AI Assistant 3 pesan per bulan</span></li>
+              <li data-off><i class="ph-x"></i><span>AI Smart Scan</span></li>
+              <li data-off><i class="ph-x"></i><span>Bagikan daftar &amp; backup cloud</span></li>
+            </ul>
+            <a class="btn btn--ghost btn--block" data-link="apk" href="#unduh">Unduh APK</a>
+          </article>
+
+          <article class="plan plan--featured reveal">
+            <div class="plan__head"><h3>Pro</h3><span class="plan__badge">Paling hemat</span></div>
+            <div class="plan__price"><b>Rp 54.999</b><span>per 6 bulan</span></div>
+            <span class="plan__was">Dari <s>Rp 89.994</s> <b>hemat 39%</b></span>
+            <p class="plan__tagline">Setara Rp 9.167 per bulan, untuk fitur tanpa batas.</p>
+            <ul class="plan__list">
+              <li><i class="ph-check"></i><span>AI Smart Scan tanpa batas</span></li>
+              <li><i class="ph-check"></i><span>AI Assistant tanpa batas</span></li>
+              <li><i class="ph-check"></i><span>Mata kuliah &amp; tugas tanpa batas</span></li>
+              <li><i class="ph-check"></i><span>Bagikan &amp; terima daftar lewat tautan</span></li>
+              <li><i class="ph-check"></i><span>Backup cloud &amp; sinkron antar HP</span></li>
+              <li><i class="ph-check"></i><span>Analitik prediktif &amp; peringatan alpa kritis</span></li>
+            </ul>
+            <a class="btn btn--lime btn--block" data-link="apk" href="#unduh">Unduh APK</a>
+          </article>
+
+          <article class="plan reveal">
+            <div class="plan__head"><h3>Pro Bulanan</h3></div>
+            <div class="plan__price"><b>Rp 14.999</b><span>per bulan</span></div>
+            <p class="plan__tagline">Fleksibel, bisa berhenti kapan saja. Fitur sama dengan Pro Semester.</p>
+            <ul class="plan__list">
+              <li><i class="ph-check"></i><span>Semua fitur Pro tanpa batas</span></li>
+              <li><i class="ph-check"></i><span>Tanpa komitmen 6 bulan</span></li>
+              <li><i class="ph-check"></i><span>Aktif otomatis setelah pembayaran</span></li>
+              <li><i class="ph-check"></i><span>Riwayat pembelian di dalam aplikasi</span></li>
+            </ul>
+            <a class="btn btn--ghost btn--block" data-link="apk" href="#unduh">Unduh APK</a>
+          </article>
+        </div>
+
+        <div class="pay-row reveal">
+          <span class="pay-chip"><i class="ph-qr-code" aria-hidden="true"></i>QRIS</span>
+          <span class="pay-chip"><i class="ph-wallet" aria-hidden="true"></i>Transfer bank</span>
+          <span class="pay-chip"><i class="ph-shield-check" aria-hidden="true"></i>Diproses Midtrans</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────── CTA ─────────────────────────── -->
+    <section class="section" id="unduh">
+      <div class="wrap">
+        <div class="cta reveal">
+          <h2 class="h2" style="color:#fff">Unduh LifeSync &amp; kendalikan semestermu.</h2>
+          <p class="lead cta__lead">
+            Gratis untuk kebutuhan dasar, tanpa iklan. Pemasangan APK hanya butuh sekitar satu menit.
+          </p>
+          <div class="cta__actions">
+            <a class="btn btn--lime" data-link="apk" href="#unduh">
+              <i class="ph-download-simple" aria-hidden="true"></i>Unduh APK
+            </a>
+            <span class="btn btn--on-dark" aria-disabled="true">
+              <i class="ph-apple-logo" aria-hidden="true"></i>iOS · segera
+            </span>
+          </div>
+          <div class="cta__tile">
+            <img src="assets/app-icon.png" alt="Ikon aplikasi LifeSync" width="62" height="62" />
+          </div>
+          <span class="cta__meta">
+            <i class="ph-device-mobile" aria-hidden="true"></i>Android · APK · v1.0.0 · Tanpa iklan
+          </span>
+          <p class="cta__note small" data-download-note hidden>Tautan unduhan sedang disiapkan.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────── FAQ ─────────────────────────── -->
+    <section class="section" id="faq">
+      <div class="wrap">
+        <div class="head-center">
+          <h2 class="h2 reveal">Pertanyaan yang sering masuk.</h2>
+          <p class="lead reveal">Belum ketemu jawabannya? Kirim saja lewat kontak developer di bawah.</p>
+        </div>
+
+        <div class="qa" style="margin-top:44px">
+          <article class="qa__card reveal">
+            <p class="qa__q"><span class="qa__num">01</span>Apakah LifeSync butuh internet?</p>
+            <p class="qa__a">Tidak. LifeSync dibangun offline-first: jadwal, presensi, tugas, catatan, dan timer berjalan penuh tanpa koneksi. Internet hanya dipakai untuk AI Scan, AI Assistant, bagikan daftar, dan backup cloud.</p>
+          </article>
+          <article class="qa__card reveal">
+            <p class="qa__q"><span class="qa__num">02</span>Bagaimana cara mengunduh aplikasinya?</p>
+            <p class="qa__a">Unduh berkas APK dari halaman ini, lalu izinkan pemasangan dari sumber ini ketika Android meminta konfirmasi. Kami juga sedang menyiapkan rilis resmi di Google Play.</p>
+          </article>
+          <article class="qa__card reveal">
+            <p class="qa__q"><span class="qa__num">03</span>Bagaimana kehadiran saya dihitung?</p>
+            <p class="qa__a">Setiap kali kamu menandai status kehadiran setelah kelas, LifeSync menghitung persentase per mata kuliah dan sisa jatah alpa. Ambang 75% adalah batas umum di kampus; aplikasi memberi peringatan sebelum kamu menyentuhnya.</p>
+          </article>
+          <article class="qa__card reveal">
+            <p class="qa__q"><span class="qa__num">04</span>Apakah data saya aman?</p>
+            <p class="qa__a">Data utamamu disimpan di perangkat. Sinkron cloud hanya aktif kalau kamu mengaktifkannya. Foto AI Scan dikirim untuk diekstrak dan tidak disimpan di server; yang tersimpan hanya teks yang kamu setujui. Tidak ada SDK iklan atau analitik.</p>
+          </article>
+          <article class="qa__card reveal">
+            <p class="qa__q"><span class="qa__num">05</span>Apakah ada paket gratis?</p>
+            <p class="qa__a">Ada. Paket Free gratis selamanya dengan 10 mata kuliah, 5 tugas aktif, catatan materi, timer 20-20-20, alarm kelas, presensi dasar, dan AI Assistant 3 pesan per bulan.</p>
+          </article>
+          <article class="qa__card reveal">
+            <p class="qa__q"><span class="qa__num">06</span>Bagaimana cara membayar Pro?</p>
+            <p class="qa__a">Pembayaran diproses lewat Midtrans dengan QRIS, atau transfer bank. Pro aktif otomatis setelah pembayaran terkonfirmasi, dan riwayat transaksi bisa kamu lihat di dalam aplikasi.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ───────────────────────────── Footer ───────────────────────────── -->
+  <footer class="footer" id="kontak">
+    <div class="wrap">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a class="brand" href="#top">
+            <img class="brand__mark" src="assets/app-icon.png" alt="" width="30" height="30" />
+            <span>Life<span style="color:var(--lime)">Sync</span></span>
+          </a>
+          <p>Aplikasi produktivitas offline-first untuk mahasiswa dan profesional. Jadwal, presensi, tugas, catatan, dan fokus dalam satu tempat.</p>
+        </div>
+
+        <div>
+          <h4>Produk</h4>
+          <ul>
+            <li><a href="#fitur">AI Smart Scan</a></li>
+            <li><a href="#kehadiran">Presensi &amp; SLA</a></li>
+            <li><a href="#fokus">Timer 20-20-20</a></li>
+            <li><a href="#harga">Paket &amp; harga</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Unduh</h4>
+          <ul>
+            <li><a data-link="apk" href="#unduh">APK Android</a></li>
+            <li><a data-todo="play" href="#unduh">Google Play (segera)</a></li>
+            <li><a data-todo="testflight" href="#unduh">TestFlight iOS (segera)</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Bantuan</h4>
+          <ul>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="mailto:haqicontact@gmail.com">Kontak developer</a></li>
+            <li><a href="privacy.html">Kebijakan privasi</a></li>
+            <li><a href="terms.html">Syarat layanan</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <span>© <span data-year>2026</span> LifeSync. Dibuat untuk mahasiswa Indonesia.</span>
+        <span>Versi aplikasi 1.0.0</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+  <script src="script.js" defer></script>
+</body>
+</html>

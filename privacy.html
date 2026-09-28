@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="id" class="no-js">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kebijakan Privasi — LifeSync</title>
+  <meta name="description" content="Bagaimana LifeSync mengumpulkan, memakai, dan melindungi datamu." />
+  <meta name="theme-color" content="#0b0c0f" />
+  <meta name="robots" content="index,follow" />
+  <link rel="icon" href="assets/app-icon.png" type="image/png" />
+  <link rel="preload" href="assets/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="styles.css" />
+  <script>document.documentElement.classList.remove("no-js");</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Lewati ke konten</a>
+  <div class="grain" aria-hidden="true"></div>
+
+  <a class="legal-back" href="index.html">
+    <img class="brand__mark" src="assets/app-icon.png" alt="" width="22" height="22" style="width:22px;height:22px;border-radius:7px" />
+    <i class="ph-arrow-left" aria-hidden="true"></i>Kembali
+  </a>
+
+  <main id="main">
+    <header class="legal-head">
+      <div class="wrap">
+        <span class="kicker">Dokumen legal</span>
+        <h1>Kebijakan Privasi</h1>
+        <p class="body">Bagaimana LifeSync mengumpulkan, memakai, dan melindungi datamu.</p>
+        <p class="legal-meta">Terakhir diperbarui: 21 September 2026</p>
+      </div>
+    </header>
+
+    <div class="wrap legal-body">
+      <h2>Pendahuluan</h2>
+      <p>LifeSync adalah aplikasi produktivitas offline-first untuk mahasiswa dan profesional. Kebijakan ini menjelaskan data apa yang kami proses, untuk apa, di mana disimpan, dan hak apa yang kamu miliki.</p>
+      <p>Dengan menggunakan LifeSync kamu menyetujui praktik yang dijelaskan di halaman ini.</p>
+
+      <h2>Informasi yang Kami Kumpulkan</h2>
+      <ul>
+        <li><strong>Data akun dari Google.</strong> Saat kamu masuk dengan Google, kami menerima ID pengguna, nama, alamat email, dan foto profil. Kami tidak pernah menerima atau menyimpan password.</li>
+        <li><strong>Data yang kamu buat sendiri.</strong> Jadwal kuliah, riwayat presensi, tugas, catatan, dan pengingat yang kamu tambahkan — baik diketik manual maupun hasil pemindaian dokumen.</li>
+        <li><strong>Data pemindaian dokumen (AI Scan).</strong> Foto yang kamu pilih dikirim ke Google Gemini untuk diekstrak menjadi teks terstruktur. Foto tidak kami simpan di server kami; hanya hasil ekstraksi yang kamu setujui di layar review yang tersimpan.</li>
+        <li><strong>Data perangkat.</strong> Versi aplikasi dan platform, dipakai hanya untuk diagnostik lokal. Kami tidak memasang SDK analitik maupun iklan.</li>
+      </ul>
+
+      <h2>Bagaimana Kami Memakai Datamu</h2>
+      <ul>
+        <li>Menjalankan fitur inti: jadwal, presensi, analitik SLA, tugas, dan timer.</li>
+        <li>Menyinkronkan data antar perangkat milikmu sendiri.</li>
+        <li>Menghitung status kehadiran dan memunculkan peringatan di bawah 75%.</li>
+        <li>Mengirim pengingat lokal sesuai jendela waktu yang kamu atur.</li>
+      </ul>
+      <p>Kami tidak menjual data kamu, tidak memakainya untuk iklan, dan tidak membagikannya ke pihak ketiga selain yang disebut di bawah.</p>
+
+      <h2>Di Mana Datamu Disimpan</h2>
+      <p>Di perangkatmu. Seluruh data tersimpan lebih dulu di database SQLite lokal di dalam aplikasi. Karena itu LifeSync tetap berfungsi penuh tanpa internet.</p>
+      <p>Di cloud (opsional). Kalau kamu masuk dengan Google, data lokal disinkronkan ke Supabase (PostgreSQL) agar bisa dipakai di perangkat lain dan menjadi cadangan.</p>
+      <p>Token sesi disimpan terenkripsi di Android Keystore / iOS Keychain. Kami tidak memakai penyimpanan biasa untuk kredensial.</p>
+      <p>Mode tamu. Kalau kamu memilih "Lanjutkan sebagai Tamu", tidak ada data yang dikirim ke cloud sama sekali.</p>
+
+      <h2>Pihak Ketiga</h2>
+      <ul>
+        <li>Google Sign-In — autentikasi akun. Tunduk pada kebijakan privasi Google.</li>
+        <li>Google Gemini — ekstraksi teks dari foto dokumen yang kamu pindai.</li>
+        <li>Supabase — database PostgreSQL dan autentikasi untuk sinkronisasi.</li>
+      </ul>
+      <p>Setiap penyedia hanya menerima data minimum yang dibutuhkan untuk fungsinya. Tidak ada data yang dijual atau dipakai untuk profiling iklan.</p>
+
+      <h2>Keamanan</h2>
+      <ul>
+        <li>Seluruh lalu lintas data memakai HTTPS/TLS; cleartext dinonaktifkan.</li>
+        <li>Akses database dibatasi Row Level Security: setiap baris hanya bisa dibaca oleh pemiliknya.</li>
+        <li>Layar identitas (KTM Digital) dan review hasil scan dilindungi FLAG_SECURE sehingga tidak bisa ditangkap layar.</li>
+        <li>Aplikasi rilis di-obfuscate dan di-shrink untuk mempersulit rekayasa balik.</li>
+      </ul>
+
+      <h2>Berapa Lama Data Disimpan</h2>
+      <p>Data aktif disimpan selama akunmu ada. Ketika kamu menghapus sebuah item, aplikasi menandainya sebagai terhapus (tombstone) agar penghapusan itu bisa ikut tersinkron ke perangkat lain; tombstone dibersihkan otomatis setelah 30 hari.</p>
+      <p>Menghapus akun akan menghapus data terkait di cloud melalui aturan cascade.</p>
+
+      <h2>Hak Kamu</h2>
+      <ul>
+        <li><strong>Mengakses</strong> — lihat seluruh datamu langsung di aplikasi, atau ekspor ke Excel/CSV.</li>
+        <li><strong>Memperbaiki</strong> — ubah jadwal, presensi, tugas, dan catatan kapan saja.</li>
+        <li><strong>Menghapus</strong> — hapus per item di aplikasi; penghapusan ikut tersinkron.</li>
+        <li><strong>Portabilitas</strong> — ekspor rekap jadwal, tugas, dan presensi dalam format .xlsx.</li>
+        <li><strong>Menarik persetujuan</strong> — keluar dari akun menghentikan sinkronisasi cloud.</li>
+      </ul>
+
+      <h2>Privasi Anak</h2>
+      <p>LifeSync ditujukan untuk pengguna berusia 13 tahun ke atas. Kami tidak dengan sengaja mengumpulkan data anak di bawah usia itu. Jika hal tersebut terjadi, hubungi kami untuk penghapusan.</p>
+
+      <h2>Perubahan Kebijakan</h2>
+      <p>Kebijakan ini dapat diperbarui mengikuti perkembangan fitur atau regulasi. Perubahan penting akan ditampilkan di aplikasi sebelum berlaku.</p>
+
+      <p class="legal-foot">
+        Pertanyaan tentang privasi bisa dikirim ke <a href="mailto:haqicontact@gmail.com" style="color:var(--purple);font-weight:700">haqicontact@gmail.com</a>,
+        atau lewat menu Pengaturan → Pusat Bantuan / Kontak Developer di dalam aplikasi.
+      </p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__bottom" style="margin-top:0;border-top:0;padding-top:0">
+      <span>© <span data-year>2026</span> LifeSync</span>
+      <span><a href="index.html">Beranda</a> · <a href="terms.html">Syarat Layanan</a></span>
+    </div>
+  </footer>
+
+  <script>document.querySelectorAll("[data-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });</script>
+</body>
+</html>
